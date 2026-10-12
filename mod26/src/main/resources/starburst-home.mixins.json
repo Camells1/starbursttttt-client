@@ -1,0 +1,7 @@
+{
+	"required": true,
+	"package": "com.starburst.home.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": ["GuiMixin"],
+	"injectors": { "defaultRequire": 1 }
+}

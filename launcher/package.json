@@ -1,0 +1,57 @@
+{
+  "name": "starbursttttt-client",
+  "productName": "Starbursttttt Client",
+  "version": "1.0.0",
+  "description": "Starbursttttt Client - Minecraft launcher with Modrinth mod search",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win dir"
+  },
+  "author": "Starbursttttt",
+  "license": "MIT",
+  "dependencies": {
+    "@fontsource/anton": "^5.3.0",
+    "@fontsource/fredoka": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/nunito": "^5.3.0",
+    "gsap": "^3.12.5",
+    "minecraft-launcher-core": "^3.18.2",
+    "msmc": "^5.0.5"
+  },
+  "devDependencies": {
+    "electron-builder": "^26.15.3",
+    "electron": "^33.4.11"
+  },
+  "build": {
+    "appId": "com.starburst.client",
+    "productName": "Starbursttttt Client",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "core/**",
+      "ui/**",
+      "resources/**",
+      "node_modules/**",
+      "package.json",
+      "!**/tools/**"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "resources/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Starbursttttt Client",
+      "artifactName": "StarburstClient-Setup-${version}.exe"
+    }
+  },
+  "repository": "github:Camells1/starbursttttt-client"
+}

@@ -1,0 +1,15 @@
+// Rasterises resources/logo.svg to resources/icon.png. Run: npx electron tools/make-icon.js
+const { app, BrowserWindow } = require('electron');
+const fs = require('fs');
+const path = require('path');
+
+app.whenReady().then(async () => {
+  const svg = fs.readFileSync(path.join(__dirname, '..', 'resources', 'logo.svg'), 'utf8');
+  const win = new BrowserWindow({ width: 256, height: 256, show: false, transparent: true, frame: false, useContentSize: true });
+  const html = `<html><body style="margin:0;background:transparent">${svg.replace('width="512" height="512"', 'width="256" height="256"')}</body></html>`;
+  await win.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
+  await new Promise(r => setTimeout(r, 300));
+  const img = await win.webContents.capturePage();
+  fs.writeFileSync(path.join(__dirname, '..', 'resources', 'icon.png'), img.toPNG());
+  app.quit();
+});

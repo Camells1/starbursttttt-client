@@ -1,0 +1,16 @@
+{
+	"schemaVersion": 1,
+	"id": "starburst-home",
+	"version": "${version}",
+	"name": "Starbursttttt Home",
+	"description": "Replaces the vanilla title screen with the Starbursttttt Client home screen.",
+	"authors": ["Starbursttttt"],
+	"license": "MIT",
+	"environment": "client",
+	"mixins": ["starburst-home.mixins.json"],
+	"depends": {
+		"fabricloader": ">=0.16.0",
+		"minecraft": "~1.21.11",
+		"java": ">=21"
+	}
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Starbursttttt Client</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self'">
+<link rel="stylesheet" href="../node_modules/@fontsource/fredoka/500.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/fredoka/700.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/nunito/600.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/nunito/800.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<header class="bar">
+  <img class="bar-logo" src="logo.svg" alt=""><span class="bar-title">STARBURSTTTTT&nbsp;CLIENT</span>
+  <span class="bar-fill"></span>
+  <button class="wb" data-win="min" aria-label="Minimize">&#8211;</button>
+  <button class="wb" data-win="max" aria-label="Maximize">&#9633;</button>
+  <button class="wb wb-x" data-win="close" aria-label="Close">&#215;</button>
+</header>
+
+<div class="shell">
+  <nav class="rail" id="rail"></nav>
+  <main class="stage">
+    <h1 class="title" id="title" aria-live="polite"></h1>
+    <section class="page" id="page"></section>
+  </main>
+</div>
+
+
+<script src="../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="background.js"></script>
+<script src="kinetic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

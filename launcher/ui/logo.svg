@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity=".9"/>
+      <stop offset=".55" stop-color="#3e86ff" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#3e86ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="star" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff2a8"/>
+      <stop offset="1" stop-color="#ffc400"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="120" fill="#070a1c"/>
+  <circle cx="256" cy="256" r="236" fill="url(#glow)"/>
+  <polygon points="256.0,56.0 279.7,198.7 362.1,149.9 313.3,232.3 456.0,256.0 313.3,279.7 362.1,362.1 279.7,313.3 256.0,456.0 232.3,313.3 149.9,362.1 198.7,279.7 56.0,256.0 198.7,232.3 149.9,149.9 232.3,198.7" fill="url(#star)"/>
+  <circle cx="256" cy="256" r="40" fill="#ffffff" opacity=".9"/>
+  <path d="M400 96 l7 20 20 7 -20 7 -7 20 -7 -20 -20 -7 20 -7z" fill="#8b5cf6"/>
+  <path d="M110 380 l5 14 14 5 -14 5 -5 14 -5 -14 -14 -5 14 -5z" fill="#3e86ff"/>
+</svg>

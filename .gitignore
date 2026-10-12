@@ -1,0 +1,13 @@
+node_modules/
+dist/
+build/
+.gradle/
+.idea/
+*.log
+*.err
+*.out
+run/
+mod/build/
+mod26/build/
+build-log.txt
+*.zip
