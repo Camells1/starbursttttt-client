@@ -11,6 +11,10 @@ A Minecraft launcher with Modrinth + CurseForge mod search, kinetic-type UI, an 
 
 Offline username is under **Settings**. You can also sign in with Microsoft there.
 
+### Updates
+
+The installed app checks GitHub releases on startup, downloads new versions in the background and installs them by itself (it waits if a game is running). Just keep it open for a few seconds after launching.
+
 ## Run from source
 
 Needs [Node.js](https://nodejs.org) 20+.
@@ -42,4 +46,4 @@ Build a mod with `./gradlew build` inside its folder, then copy the jar into `la
 
 ## Status
 
-The launcher UI and the new theme load and run. The Squishy build this came from was tested end to end on 1.21.11; under the Starbursttttt name, the in-game home screen, 1.8, 26.1, 26.2, Microsoft login, modpack import and CurseForge are untested.
+The launcher, first-run setup and theme are tested in the packaged app. The in-game home screen under this name, 1.8, 26.1, 26.2, Microsoft login, modpack import, CurseForge and the auto-updater itself (it needs a newer release than the one installed to do anything) are untested.

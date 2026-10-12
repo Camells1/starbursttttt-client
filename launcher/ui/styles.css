@@ -231,3 +231,8 @@ body { background: transparent !important; }
 .log { background: rgba(27, 34, 80, .6); }
 ::selection { background: var(--purple); color: #fff; }
 .rail-foot b { color: var(--yellow); }
+
+/* update banner */
+.update { -webkit-app-region: no-drag; margin-right: 10px; padding: 5px 14px; border-radius: 99px; font-size: 12px; font-weight: 800; letter-spacing: .06em; background: var(--purple); color: #fff; display: none; }
+.update.show { display: inline-flex; align-items: center; }
+.update.ready { background: var(--yellow); color: var(--ink); cursor: pointer; }

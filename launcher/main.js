@@ -122,5 +122,31 @@ ipcMain.on('win', (_e, what) => {
   else if (what === 'close') win.close();
 });
 
-app.whenReady().then(createWindow);
+// ---- auto-update (GitHub releases). Only runs in the installed app, never in dev.
+function setupUpdates() {
+  if (!app.isPackaged) return;
+  let autoUpdater;
+  try { ({ autoUpdater } = require('electron-updater')); } catch { return; }
+  autoUpdater.autoDownload = true;
+  autoUpdater.autoInstallOnAppQuit = true;
+  const send = (s) => sendUi('update', s);
+  autoUpdater.on('update-available', (i) => send({ state: 'available', version: i.version }));
+  autoUpdater.on('download-progress', (p) => send({ state: 'downloading', percent: Math.round(p.percent) }));
+  autoUpdater.on('update-downloaded', (i) => {
+    send({ state: 'ready', version: i.version });
+    // install by itself unless a game is running; if one is, it installs when the launcher closes
+    const tryInstall = () => {
+      if (launcher.isRunning()) return setTimeout(tryInstall, 30000);
+      send({ state: 'installing', version: i.version });
+      setTimeout(() => autoUpdater.quitAndInstall(true, true), 2500);
+    };
+    setTimeout(tryInstall, 2000);
+  });
+  autoUpdater.on('error', (e) => send({ state: 'error', message: String(e && e.message || e).slice(0, 160) }));
+  ipcMain.on('update:install', () => autoUpdater.quitAndInstall());
+  ipcMain.on('update:check', () => autoUpdater.checkForUpdates().catch(() => {}));
+  setTimeout(() => autoUpdater.checkForUpdates().catch(() => {}), 4000);
+}
+
+app.whenReady().then(() => { createWindow(); setupUpdates(); });
 app.on('window-all-closed', () => app.quit());

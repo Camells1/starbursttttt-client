@@ -1,7 +1,7 @@
 {
   "name": "starbursttttt-client",
   "productName": "Starbursttttt Client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Starbursttttt Client - Minecraft launcher with Modrinth mod search",
   "main": "main.js",
   "scripts": {
@@ -15,13 +15,14 @@
     "@fontsource/fredoka": "^5.3.0",
     "@fontsource/ibm-plex-mono": "^5.3.0",
     "@fontsource/nunito": "^5.3.0",
+    "electron-updater": "^6.8.9",
     "gsap": "^3.12.5",
     "minecraft-launcher-core": "^3.18.2",
     "msmc": "^5.0.5"
   },
   "devDependencies": {
-    "electron-builder": "^26.15.3",
-    "electron": "^33.4.11"
+    "electron": "^33.4.11",
+    "electron-builder": "^26.15.3"
   },
   "build": {
     "appId": "com.starburst.client",
@@ -51,6 +52,11 @@
       "createStartMenuShortcut": true,
       "shortcutName": "Starbursttttt Client",
       "artifactName": "StarburstClient-Setup-${version}.exe"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "Camells1",
+      "repo": "starbursttttt-client"
     }
   },
   "repository": "github:Camells1/starbursttttt-client"

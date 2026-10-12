@@ -499,17 +499,37 @@ function renderSettings(page) {
 
 const PAGE_RENDER = { play: renderPlay, mods: renderMods, library: renderLibrary, settings: renderSettings };
 
+// ---------------------------------------------------------------- updates
+
+(() => {
+  const el = document.getElementById('update');
+  starburst.on('update', u => {
+    el.className = 'update show';
+    if (u.state === 'available') el.textContent = 'Update ' + u.version + ' found';
+    else if (u.state === 'downloading') el.textContent = 'Updating ' + u.percent + '%';
+    else if (u.state === 'installing') el.textContent = 'Installing ' + u.version + '...';
+    else if (u.state === 'ready') { el.textContent = 'Restart to update to ' + u.version; el.classList.add('ready'); }
+    else el.className = 'update';
+  });
+  el.addEventListener('click', () => { if (el.classList.contains('ready')) starburst.installUpdate(); });
+})();
+
 // ---------------------------------------------------------------- boot
 
 document.querySelectorAll('[data-win]').forEach(b => b.addEventListener('click', () => starburst.win(b.dataset.win)));
 
 (async function boot() {
-  let st = await starburst.state();
-  if (!st.instances.length) {
-    st = await starburst.createInstance({ name: 'Starburst 1.21.11', mc: '1.21.11', loader: 'fabric' });
+  try {
+    let st = await starburst.state();
+    if (!st.instances.length) {
+      st = await starburst.createInstance({ name: 'Starburst 1.21.11', mc: '1.21.11', loader: 'fabric' });
+    }
+    S.st = st;
+    buildRail();
+    if (!K.reduce) gsap.from('.nav', { x: -60, opacity: 0, duration: 0.8, stagger: 0.08, ease: 'expo.out', clearProps: 'all' });
+    go('play');
+  } catch (e) {
+    // never leave a blank window: show what went wrong
+    $('#page').append(h('p', { class: 'err', style: 'user-select:text;font-size:14px' }, 'Could not start: ' + (e && e.message ? e.message : e)));
   }
-  S.st = st;
-  buildRail();
-  if (!K.reduce) gsap.from('.nav', { x: -60, opacity: 0, duration: 0.8, stagger: 0.08, ease: 'expo.out', clearProps: 'all' });
-  go('play');
 })();

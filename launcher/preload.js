@@ -27,5 +27,7 @@ contextBridge.exposeInMainWorld('starburst', {
   addJars: call('import:jars'),
   importPack: call('import:pack'),
   win: (w) => ipcRenderer.send('win', w),
+  installUpdate: () => ipcRenderer.send('update:install'),
+  checkUpdate: () => ipcRenderer.send('update:check'),
   on: (ch, fn) => ipcRenderer.on('launch:' + ch, (_e, p) => fn(p)),
 });
