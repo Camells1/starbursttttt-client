@@ -4,7 +4,7 @@ A Minecraft launcher with Modrinth + CurseForge mod search, kinetic-type UI, an 
 
 ## Play (Windows)
 
-1. Download `StarburstClient-Setup-1.0.0.exe` from the [Releases](../../releases) page and run it. Pick an install folder; it adds a desktop and Start menu shortcut.
+1. Download the latest `StarburstClient-Setup-x.y.z.exe` from the [Releases](../../releases) page and run it. Pick an install folder; it adds a desktop and Start menu shortcut.
    (Prefer no install? `StarburstClient-win.zip` is a portable copy: unzip and run `Starbursttttt Client.exe`.)
 2. Open Starbursttttt Client from the shortcut.
 3. Pick an instance on **Play** and hit the big button. First launch downloads Minecraft, Fabric and Java if you don't have it, so give it a few minutes. Later launches reuse the downloaded files.
